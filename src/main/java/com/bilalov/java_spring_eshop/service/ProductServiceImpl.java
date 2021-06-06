@@ -1,5 +1,6 @@
 package com.bilalov.java_spring_eshop.service;
 
+import com.bilalov.java_spring_eshop.dao.BucketRepository;
 import com.bilalov.java_spring_eshop.dao.ProductRepository;
 import com.bilalov.java_spring_eshop.domain.Bucket;
 import com.bilalov.java_spring_eshop.domain.User;

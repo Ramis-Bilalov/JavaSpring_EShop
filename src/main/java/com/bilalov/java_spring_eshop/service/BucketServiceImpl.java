@@ -10,10 +10,7 @@ import com.bilalov.java_spring_eshop.dto.BucketDetailDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,6 +18,7 @@ public class BucketServiceImpl implements BucketService {
     private final BucketRepository bucketRepository;
     private final ProductRepository productRepository;
     private final UserService userService;
+    private List<Product> productList;
 
     public BucketServiceImpl(BucketRepository bucketRepository, ProductRepository productRepository, UserService userService) {
         this.bucketRepository = bucketRepository;
@@ -33,7 +31,7 @@ public class BucketServiceImpl implements BucketService {
     public Bucket createBucket(User user, List<Long> productIds) {
         Bucket bucket = new Bucket();
         bucket.setUser(user);
-        List<Product> productList = getCollectRefProductsByIds(productIds);
+        productList = getCollectRefProductsByIds(productIds);
         bucket.setProducts(productList);
         return bucketRepository.save(bucket);
     }
