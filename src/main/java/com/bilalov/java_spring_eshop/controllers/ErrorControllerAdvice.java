@@ -12,6 +12,8 @@ public class ErrorControllerAdvice {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public String exception(Exception exception, Model model) {
+        System.out.println("***************************LOGGING***************************");
+        System.out.println("called ErrorControllerAdvice.exception");
         String errorMessage = (exception != null ? exception.getMessage() : "Unknown error");
         model.addAttribute("errorMessage", errorMessage);
         return "error";

@@ -9,7 +9,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.security.Principal;
 import java.util.Objects;
 
@@ -32,7 +31,8 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/new")
     public String newUser(Model model) {
-        System.out.println("called method newUser");
+        System.out.println("***************************LOGGING***************************");
+        System.out.println("called UserController.newUser");
         model.addAttribute("user", new UserDTO());
         return "user";
     }
@@ -41,7 +41,6 @@ public class UserController {
     @GetMapping("/{name}/roles")
     @ResponseBody
     public String getRoles(@PathVariable("name") String username) {
-        System.out.println("called method getRoles");
         User byName = userService.findByName(username);
         return byName.getRole().name();
     }
@@ -73,6 +72,8 @@ public class UserController {
 
     @PostMapping("/profile")
     public String updateProfileUser(UserDTO dto, Model model, Principal principal) {
+        System.out.println("***************************LOGGING***************************");
+        System.out.println("called UserController.updateProfileUser");
         if (principal == null || !Objects.equals(principal.getName(), dto.getUsername())) {
             throw new RuntimeException("You are not authorize");
         }
@@ -80,7 +81,6 @@ public class UserController {
                 && !dto.getPassword().isEmpty()
                 && !Objects.equals(dto.getPassword(), dto.getMatchingPassword())) {
             model.addAttribute("user", dto);
-            // нужно добавить какое-то сообщение, но сделаем это в другой раз
             return "profile";
         }
         userService.updateProfile(dto);
