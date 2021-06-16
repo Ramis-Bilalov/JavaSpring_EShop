@@ -30,15 +30,11 @@ public class MainController {
 
     @RequestMapping("/login")
     public String login() {
-        System.out.println("***************************LOGGING***************************");
-        System.out.println("called MainController.login");
         return "login";
     }
 
     @RequestMapping("/login-error") // чтобы пользователь попал на 404-page
     public String loginError(Model model) {
-        System.out.println("***************************LOGGING***************************");
-        System.out.println("called MainController.loginError");
         model.addAttribute("loginError", true);
         return "login";
     }
