@@ -1,13 +1,15 @@
 package com.bilalov.java_spring_eshop.service;
 
-import com.bilalov.java_spring_eshop.dao.BucketRepository;
 import com.bilalov.java_spring_eshop.dao.ProductRepository;
 import com.bilalov.java_spring_eshop.domain.Bucket;
+import com.bilalov.java_spring_eshop.domain.Product;
 import com.bilalov.java_spring_eshop.domain.User;
 import com.bilalov.java_spring_eshop.dto.ProductDTO;
 import com.bilalov.java_spring_eshop.mapper.ProductMapper;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -15,14 +17,17 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductMapper mapper = ProductMapper.MAPPER;
+
     private final ProductRepository productRepository;
     private final UserService userService;
     private final BucketService bucketService;
+    private final SimpMessagingTemplate template;
 
-    public ProductServiceImpl(ProductRepository productRepository, UserService userService, BucketService bucketService) {
+    public ProductServiceImpl(ProductRepository productRepository, UserService userService, BucketService bucketService, SimpMessagingTemplate template) {
         this.productRepository = productRepository;
         this.userService = userService;
         this.bucketService = bucketService;
+        this.template = template;
     }
 
     @Override
@@ -46,5 +51,13 @@ public class ProductServiceImpl implements ProductService {
         } else {
             bucketService.addProducts(bucket, Collections.singletonList(productId));
         }
+    }
+
+    @Override
+    @Transactional
+    public void addProduct(ProductDTO dto) {
+        Product product = mapper.toProduct(dto);
+        Product savedProduct = productRepository.save(product);
+        template.convertAndSend("/topic/products", ProductMapper.MAPPER.fromProduct(savedProduct));
     }
 }

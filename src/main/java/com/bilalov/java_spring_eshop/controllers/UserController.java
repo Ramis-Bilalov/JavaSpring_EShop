@@ -31,8 +31,6 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/new")
     public String newUser(Model model) {
-        System.out.println("***************************LOGGING***************************");
-        System.out.println("called UserController.newUser");
         model.addAttribute("user", new UserDTO());
         return "user";
     }
@@ -72,8 +70,6 @@ public class UserController {
 
     @PostMapping("/profile")
     public String updateProfileUser(UserDTO dto, Model model, Principal principal) {
-        System.out.println("***************************LOGGING***************************");
-        System.out.println("called UserController.updateProfileUser");
         if (principal == null || !Objects.equals(principal.getName(), dto.getUsername())) {
             throw new RuntimeException("You are not authorize");
         }
