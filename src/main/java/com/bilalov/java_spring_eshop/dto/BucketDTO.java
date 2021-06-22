@@ -4,12 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @Data
@@ -20,7 +15,6 @@ public class BucketDTO {
     private int amountProducts;
     private Double sum;
     private List<BucketDetailDTO> bucketDetails = new ArrayList<>();
-
 
     public void aggregate() {
         this.amountProducts = bucketDetails.size();

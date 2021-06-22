@@ -7,9 +7,6 @@ import com.bilalov.java_spring_eshop.domain.Product;
 import com.bilalov.java_spring_eshop.domain.User;
 import com.bilalov.java_spring_eshop.dto.BucketDTO;
 import com.bilalov.java_spring_eshop.dto.BucketDetailDTO;
-import com.bilalov.java_spring_eshop.dto.ProductDTO;
-import com.bilalov.java_spring_eshop.mapper.BucketMapper;
-import com.bilalov.java_spring_eshop.mapper.ProductMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
@@ -18,8 +15,6 @@ import java.util.stream.Collectors;
 
 @Service
 public class BucketServiceImpl implements BucketService {
-
-    private final BucketMapper mapper = BucketMapper.MAPPER;
     private final BucketRepository bucketRepository;
     private final ProductRepository productRepository;
     private final UserService userService;
@@ -29,11 +24,6 @@ public class BucketServiceImpl implements BucketService {
         this.bucketRepository = bucketRepository;
         this.productRepository = productRepository;
         this.userService = userService;
-    }
-
-    @Override
-    public List<BucketDTO> getAll() {
-        return mapper.fromBucketList(bucketRepository.findAll());
     }
 
     @Override
