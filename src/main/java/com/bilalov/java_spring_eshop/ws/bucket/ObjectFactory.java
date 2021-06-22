@@ -6,7 +6,7 @@
 //
 
 
-package com.bilalov.java_spring_eshop.ws.greeting;
+package com.bilalov.java_spring_eshop.ws.bucket;
 
 import javax.xml.bind.annotation.XmlRegistry;
 
@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the com.bilalov.java_spring_eshop.ws.greeting package. 
+ * generated in the com.bilalov.java_spring_eshop.ws.bucket package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -30,34 +30,34 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.bilalov.java_spring_eshop.ws.greeting
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.bilalov.java_spring_eshop.ws.bucket
      * 
      */
     public ObjectFactory() {
     }
 
     /**
-     * Create an instance of {@link GetGreetingResponse }
+     * Create an instance of {@link GetBucketRequest }
      * 
      */
-    public GetGreetingResponse createGetGreetingResponse() {
-        return new GetGreetingResponse();
+    public GetBucketRequest createGetBucketRequest() {
+        return new GetBucketRequest();
     }
 
     /**
-     * Create an instance of {@link Greeting }
+     * Create an instance of {@link GetBucketResponse }
      * 
      */
-    public Greeting createGreeting() {
-        return new Greeting();
+    public GetBucketResponse createGetBucketResponse() {
+        return new GetBucketResponse();
     }
 
     /**
-     * Create an instance of {@link GetGreetingRequest }
+     * Create an instance of {@link BucketWS }
      * 
      */
-    public GetGreetingRequest createGetGreetingRequest() {
-        return new GetGreetingRequest();
+    public BucketWS createBucketWS() {
+        return new BucketWS();
     }
 
 }

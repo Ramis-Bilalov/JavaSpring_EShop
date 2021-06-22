@@ -5,5 +5,5 @@
 // Generated on: 2021.06.17 at 10:53:45 PM MSK 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://bilalov.com/java_spring_eshop/ws/greeting", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.bilalov.java_spring_eshop.ws.greeting;
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://bilalov.com/java_spring_eshop/ws/bucket", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package com.bilalov.java_spring_eshop.ws.bucket;

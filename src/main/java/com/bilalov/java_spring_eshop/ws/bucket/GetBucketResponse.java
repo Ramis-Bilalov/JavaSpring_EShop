@@ -6,8 +6,10 @@
 //
 
 
-package com.bilalov.java_spring_eshop.ws.greeting;
+package com.bilalov.java_spring_eshop.ws.bucket;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="greeting" type="{http://bilalov.com/java_spring_eshop/ws/greeting}greeting"/>
+ *         &lt;element name="bucket" type="{http://bilalov.com/java_spring_eshop/ws/bucket}bucketWS" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "greeting"
+    "bucket"
 })
-@XmlRootElement(name = "getGreetingResponse")
-public class GetGreetingResponse {
+@XmlRootElement(name = "getBucketResponse")
+public class GetBucketResponse {
 
     @XmlElement(required = true)
-    protected Greeting greeting;
+    protected List<BucketWS> bucket;
 
     /**
-     * Gets the value of the greeting property.
+     * Gets the value of the bucket property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Greeting }
-     *     
-     */
-    public Greeting getGreeting() {
-        return greeting;
-    }
-
-    /**
-     * Sets the value of the greeting property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the bucket property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Greeting }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getBucket().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link BucketWS }
+     * 
+     * 
      */
-    public void setGreeting(Greeting value) {
-        this.greeting = value;
+    public List<BucketWS> getBucket() {
+        if (bucket == null) {
+            bucket = new ArrayList<BucketWS>();
+        }
+        return this.bucket;
     }
 
 }

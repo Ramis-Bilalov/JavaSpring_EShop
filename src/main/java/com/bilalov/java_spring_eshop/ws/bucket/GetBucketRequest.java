@@ -6,7 +6,7 @@
 //
 
 
-package com.bilalov.java_spring_eshop.ws.products;
+package com.bilalov.java_spring_eshop.ws.bucket;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -34,8 +34,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-@XmlRootElement(name = "getProductsRequest")
-public class GetProductsRequest {
+@XmlRootElement(name = "getBucketRequest")
+public class GetBucketRequest {
 
 
 }
