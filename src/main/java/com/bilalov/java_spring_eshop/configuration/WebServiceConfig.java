@@ -1,5 +1,6 @@
 package com.bilalov.java_spring_eshop.configuration;
 
+import com.bilalov.java_spring_eshop.endpoint.BucketEndpoint;
 import com.bilalov.java_spring_eshop.endpoint.GreetingEndpoint;
 import com.bilalov.java_spring_eshop.endpoint.ProductsEndpoint;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -53,5 +54,20 @@ public class WebServiceConfig {
     @Bean("productsSchema")
     public XsdSchema xsdProductsSchema() {
         return new SimpleXsdSchema(new ClassPathResource("ws/products.xsd"));
+    }
+
+    @Bean(name = "bucket")
+    public DefaultWsdl11Definition bucketWsdlDefinition() {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("BucketPort");
+        wsdl11Definition.setLocationUri("/ws");
+        wsdl11Definition.setTargetNamespace(BucketEndpoint.NAMESPACE_URL);
+        wsdl11Definition.setSchema(xsdBucketSchema());
+        return wsdl11Definition;
+    }
+
+    @Bean("bucketSchema")
+    public XsdSchema xsdBucketSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("ws/bucket.xsd"));
     }
 }
