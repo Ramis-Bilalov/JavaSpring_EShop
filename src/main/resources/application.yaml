@@ -1,11 +1,31 @@
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: validate
+#    show-sql: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/shop
+#    username: postgres
+#    password: postgres
+#  flyway:
+#    baseline-on-migrate: true
+server:
+  port: 8888
 spring:
-  jpa:
-    hibernate:
-      ddl-auto: validate
-    show-sql: true
-  datasource:
-    url: jdbc:postgresql://localhost:5432/shop
-    username: postgres
-    password: postgres
-  flyway:
-    baseline-on-migrate: true
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Ramis-Bilalov/spring-cloud-config.git
+          search-paths: config
+          clone-on-start: true
+  application:
+    name: config_server
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+
+#    server.port=8888
+#
+#    spring.cloud.config.server.git.uri=https://github.com/Ramis-Bilalov/spring-cloud-config.git

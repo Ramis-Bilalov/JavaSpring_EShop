@@ -1,11 +1,15 @@
 package com.bilalov.java_spring_eshop;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-@SpringBootApplication
+@EnableConfigServer
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class JavaSpringEshopApplication {
 
     public static void main(String[] args) {
